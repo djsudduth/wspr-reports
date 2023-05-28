@@ -1,4 +1,4 @@
- Date   Time	Call	MHz	SNR	Drift	Grid	Pwr	Reporter	RGrid	km	az	Mode
+Timestamp	Call	MHz	SNR	Drift	Grid	Pwr	Reporter	RGrid	km	az	Mode
  2023-05-24 02:42 	 KN0VA 	 7.040061 	 -23 	 0 	 EN35 	 5 	 M0PWX 	 JO01ij 	 6459 	 47 	 W-2 
  2023-05-24 02:42 	 KN0VA 	 7.040050 	 -21 	 0 	 EN35 	 5 	 WA3DNM 	 FM29fw 	 1553 	 107 	 W-2 
  2023-05-24 02:42 	 KN0VA 	 7.040058 	 -9 	 0 	 EN35 	 5 	 K2JY 	 EM40 	 1677 	 173 	 W-2 
