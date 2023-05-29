@@ -72,7 +72,7 @@ def get_wspr_snr_trends(df):
             stdv = 0
             variance = 0
         #slopes.append("{:.2f}".format(slope))
-        slopes.append(float(slope))
+        slopes.append(round(float(slope), 2))
         stdvs.append("{:.2f}".format(stdv))
         variances.append(round(float(variance), 1))
         maps.append(df.loc[(df['Reporter'] == row['Reporter'])].iloc[0]['map'])
@@ -84,18 +84,22 @@ def get_wspr_snr_trends(df):
     df2 = df2.reset_index()
     #print (df.loc[(df['Reporter'] == row['Reporter'])].iloc[0]['map'])
     #print (df.loc[(df['Reporter'] == 'N9AWU')].iloc[0]['map'])
-    
+
+    df5 = df.groupby(['km', 'Reporter']).agg({'flux':list}).reset_index()
+    print (df5.to_string() + "\n\n")
+    input("View of SNRs and flux by reporter / goes - press Enter to continue...")
+
+
     df3 = df2.groupby('map').agg({'slope':list}).reset_index()
     df3['snr trend'] = [np.array(x).mean() for x in df3.slope.values]
     #df2['var mean'] = [np.array(x).mean() for x in df2.variance.values]
-    print (df3.to_string())
+    print (df3.to_string() + "\n\n")
+
     df4 = df2.groupby('map').agg({'variance':list}).reset_index()
     df4['var trend'] = [np.array(x).mean() for x in df4.variance.values]
-    print (df4.to_string())
+    print (df4.to_string() + "\n\n")
 
-    df5 = df.groupby(['km', 'Reporter']).agg({'flux':list}).reset_index()
-    print (df5.to_string)
-
+ 
 
 
 
