@@ -12,29 +12,48 @@ def open_wspr_file():
     df = pd.read_csv("wspr.txt", sep='\t')
     return (df)
 
+def open_goes_xray_file():
+    #open the GOES satellite 6-hour xray flux data
+    dfx = pd.read_json('xrays-6-hour.json')
+    dfx = dfx.iloc[::2]
+    dfx = dfx.rename(columns={'time_tag':'Timestamp'})
+    dfx.flux = dfx.flux.apply(float).round(12)
+    return(dfx)
+
+
+def join_wspr_with_goes(df, dfx):
+    #join the GOES satellite 6-hour xray flux data with the wspr data and return join
+    df = pd.merge(df, dfx, on='Timestamp', how='inner').reset_index()
+    print (df.head(5))
+    input("Validate joined data - press Enter to continue...")
+    return(df)
+
+
 def add_wspr_dimensions(df):
     if 'Timestamp' in df.columns:
         df['Timestamp'] = df['Timestamp'].str.strip()
-        df['Timestamp'] = df['Timestamp'].str.replace(" ", "T")
-        df['DateTime'] = pd.to_datetime(df['Timestamp'] + ":00Z")
+        df['Timestamp'] = df['Timestamp'].str.replace(" ", "T") +":00Z"
         df['Reporter'] = df['Reporter'].str.strip()
         df['map'] = pd.cut(df['az'], [0, 23, 68, 113, 158, 203, 248, 293, 337, 359], labels= ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N'], ordered=False)
         df['drange'] = pd.cut(df['km'], [0, 800, 4000, 8000, 13000], labels=['NEAR', 'MID', 'LONG', 'VLONG'])
-        df = df.sort_values('DateTime')
-        print (df.to_string() + "\n\n")
+        df = df.sort_values('Timestamp').reset_index()
+        print (df.head(7) ) #+ "\n\n")
+        input("Validate WSPR data - press Enter to continue...")
         #print (df.loc[(df['map'] == 'NW') & (df['drange'] == 'MID')])
+        return(df)
     else:
         print ("\n" + WSPR_HEADER_ERR)
+
 
 def get_wspr_snr_trends(df):
     slopes = []
     stdvs = []
     variances = []
     maps = []
-    kms = []
 
     df2 = df.groupby(['map', 'km', 'Reporter'])['SNR'].describe()
     print (df2.to_string() + "\n\n")
+    input("View of SNRs by direction - press Enter to continue...")
 
     df2 = df2.reset_index()
     #print(df2.groupby('map')['std'].mean() + "\n\n")
@@ -55,19 +74,29 @@ def get_wspr_snr_trends(df):
         #slopes.append("{:.2f}".format(slope))
         slopes.append(float(slope))
         stdvs.append("{:.2f}".format(stdv))
-        variances.append("{:.2f}".format(variance))
+        variances.append(round(float(variance), 1))
         maps.append(df.loc[(df['Reporter'] == row['Reporter'])].iloc[0]['map'])
-    df2['slopes'] = slopes
-    df2['stdvs'] = stdvs
-    df2['variances'] = variances
+    df2['slope'] = slopes
+    df2['stdv'] = stdvs
+    df2['variance'] = variances
     df2['map'] = maps
     print (df2.to_string() + "\n\n")
     df2 = df2.reset_index()
     #print (df.loc[(df['Reporter'] == row['Reporter'])].iloc[0]['map'])
+    #print (df.loc[(df['Reporter'] == 'N9AWU')].iloc[0]['map'])
     
-    df2 = df2.groupby('map').agg({'slopes':list}).reset_index()
-    df2['Mean'] = [np.array(x).mean() for x in df2.slopes.values]
-    print (df2.to_string())
+    df3 = df2.groupby('map').agg({'slope':list}).reset_index()
+    df3['snr trend'] = [np.array(x).mean() for x in df3.slope.values]
+    #df2['var mean'] = [np.array(x).mean() for x in df2.variance.values]
+    print (df3.to_string())
+    df4 = df2.groupby('map').agg({'variance':list}).reset_index()
+    df4['var trend'] = [np.array(x).mean() for x in df4.variance.values]
+    print (df4.to_string())
+
+    df5 = df.groupby(['km', 'Reporter']).agg({'flux':list}).reset_index()
+    print (df5.to_string)
+
+
 
 
  
@@ -81,8 +110,12 @@ def main():
     try:
         #Read wspr data from wsprnet.org
         df = open_wspr_file()
-        #Add columns of data
-        add_wspr_dimensions(df)
+        #Add columns of data and normalize timestamps
+        df = add_wspr_dimensions(df)
+        #Read the GOES xray data
+        dfx = open_goes_xray_file()
+        #Inner join the wspr and xray data and return join
+        df = join_wspr_with_goes(df, dfx)
         #Determine if wspr signal strength is getting stronger or weaker (nust have at least 3 reports)
         get_wspr_snr_trends(df)
 
