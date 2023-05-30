@@ -27,6 +27,7 @@ def join_wspr_with_goes(df, dfx):
     print ("\n\nGOES data - first rows: ")
     print (df.head(5))
     input("Press Enter to continue...")
+    df.to_csv("wspr-goes-data.csv")
     return(df)
 
 
@@ -56,6 +57,8 @@ def get_wspr_snr_trends(df):
     df2 = df.groupby(['map', 'km', 'Reporter'])['SNR'].describe()
     print ("\n\nWSPR mean and std dev of SNRs by map direction from your callsign location: ")
     print (df2.to_string() + "\n\n")
+    df2.to_csv("wspr-map-trends.csv")
+
     input("Press Enter to continue...")
 
     df2 = df2.reset_index()
@@ -87,6 +90,7 @@ def get_wspr_snr_trends(df):
     print ("\n\nTrending slopes and std dev of SNRs by distance of Reporting callsign: ")
     print (df2.to_string())
     input("Press Enter to continue...")
+    df2.to_csv("wspr-trends-distance.csv")
     df2 = df2.reset_index()
     #print (df.loc[(df['Reporter'] == row['Reporter'])].iloc[0]['map'])
     #print (df.loc[(df['Reporter'] == 'N9AWU')].iloc[0]['map'])
