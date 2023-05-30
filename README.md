@@ -36,3 +36,9 @@ Changing antenna configurations and using this data to understand performance sh
 
 ## example range of data
 ![GOES data range for example](goes-data-range.png)
+
+
+## release
+v0.0.1 - 05/29/2023
+
+Thank you!  KN0VA
