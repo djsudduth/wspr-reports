@@ -54,7 +54,7 @@ def get_wspr_snr_trends(df):
     maps = []
 
     df2 = df.groupby(['map', 'km', 'Reporter'])['SNR'].describe()
-    print ("\n\nWSPR mean and std dev of SNRs by direction from your callsign location: ")
+    print ("\n\nWSPR mean and std dev of SNRs by map direction from your callsign location: ")
     print (df2.to_string() + "\n\n")
     input("Press Enter to continue...")
 
@@ -83,7 +83,8 @@ def get_wspr_snr_trends(df):
     df2['stdv'] = stdvs
     df2['variance'] = variances
     df2['map'] = maps
-    print ("\n\nTrending slopes and std dev of SNRs by Reporting callsign: ")
+
+    print ("\n\nTrending slopes and std dev of SNRs by distance of Reporting callsign: ")
     print (df2.to_string())
     input("Press Enter to continue...")
     df2 = df2.reset_index()
