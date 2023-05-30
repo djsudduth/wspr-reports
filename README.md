@@ -23,6 +23,8 @@ The wspr and xray data will be joined on timestamp. Raw data outputs:
 5. View of reporter callsigns by distance, GOES flux
 6. Mean of the trending slopes and variancesof SNR reports by map direction from your location (+slopes - trending stronger, -slopes - weaker)
 
+Data is saved as .csv files in the script directory.
+
 
 ## notes
 Note that wspr SNRs vary by a standard deviation of typically around 2.0+ even when xray flux is low and steady. This is independent of distance. Example:  
