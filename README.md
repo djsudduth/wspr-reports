@@ -2,18 +2,16 @@
 Reports and charts for amateur radio wspr hf propagation accuracy measurements
 
 ## wspr data
-Copy-paste data directly from wsprnet.org database query results page and save the data as 'wspr.txt' in the script folder.  Data should look like:  
-`Timestamp	Call	MHz	SNR	Drift	Grid	Pwr	Reporter	RGrid	km	az	Mode   
- 2023-05-29 23:12 	 KN0VA 	 10.140125 	 -16 	 0 	 EN35 	 5 	 VE6PDQ 	 DO34lr 	 1748 	 313 	 W-2   
- 2023-05-29 23:12 	 KN0VA 	 10.140133 	 -15 	 0 	 EN35 	 5 	 WD4ELG 	 FM06be 	 1511 	 129 	 W-2   
- ...`
+Copy-paste data directly from wsprnet.org database query results page and save the data as 'wspr.txt' in the script folder. See example wspr.txt data in the repo. 
+
 Be sure to save the headers with the data (api forthcoming)  
 
 ## xray data
 Save GOES `xrays-6-hour.json` directly to same folder from https://services.swpc.noaa.gov/json/goes/primary/  
+See example GOES data in the repo. 
 
 ## usage
-Requirements - numpy and pandas  
+Requirements - numpy and pandas  (`pip install`)
 
 Execute:  
 `python wspr-reports.py`    
@@ -35,3 +33,4 @@ Data measurements over 1-2 hours should consider D-layer ionization variability 
 Changing antenna configurations and using this data to understand performance should consider multiple wspr calls throughout the day or days
 
 
+![GOES data range for example](goes-data-range.png)
