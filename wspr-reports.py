@@ -26,7 +26,7 @@ def join_wspr_with_goes(df, dfx):
     df = pd.merge(df, dfx, on='Timestamp', how='inner').reset_index()
     print ("\n\nGOES data - first rows: ")
     print (df.head(5))
-    input("Press Enter to continue...")
+    input("Saving full wspr-goes-data.csv - press Enter to continue...")
     df.to_csv("wspr-goes-data.csv")
     return(df)
 
@@ -58,8 +58,7 @@ def get_wspr_snr_trends(df):
     print ("\n\nWSPR mean and std dev of SNRs by map direction from your callsign location: ")
     print (df2.to_string() + "\n\n")
     df2.to_csv("wspr-map-trends.csv")
-
-    input("Press Enter to continue...")
+    input("Saving wspr-map-trends.csv - press Enter to continue...")
 
     df2 = df2.reset_index()
     #print(df2.groupby('map')['std'].mean() + "\n\n")
@@ -89,7 +88,7 @@ def get_wspr_snr_trends(df):
 
     print ("\n\nTrending slopes and std dev of SNRs by distance of Reporting callsign: ")
     print (df2.to_string())
-    input("Press Enter to continue...")
+    input("Saving wspr-trends-distance.csv - press Enter to continue...")
     df2.to_csv("wspr-trends-distance.csv")
     df2 = df2.reset_index()
     #print (df.loc[(df['Reporter'] == row['Reporter'])].iloc[0]['map'])
@@ -106,7 +105,8 @@ def get_wspr_snr_trends(df):
     df3['snr trend'] = [np.array(x).mean() for x in df3.slope.values]
     #df2['var mean'] = [np.array(x).mean() for x in df2.variance.values]
     print (df3.to_string() + "\n\n")
-    input("Press Enter to continue...")
+    df3.to_csv("wspr-trends-by-azimuth.csv")
+    input("Saving wspr-trends-by-azimuth.csv - press Enter to continue...")
 
     print ("\n\nSNR variances by map direction from your callsign location: ")
     df4 = df2.groupby('map').agg({'variance':list}).reset_index()
