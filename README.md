@@ -2,7 +2,11 @@
 Reports and charts for amateur radio wspr hf propagation accuracy measurements
 
 ## wspr data
-Copy-paste data directly from wsprnet.org database query results page and save the data as 'wspr.txt' in the script folder.  
+Copy-paste data directly from wsprnet.org database query results page and save the data as 'wspr.txt' in the script folder.  Data should look like:  
+Timestamp	Call	MHz	SNR	Drift	Grid	Pwr	Reporter	RGrid	km	az	Mode   
+ 2023-05-29 23:12 	 KN0VA 	 10.140125 	 -16 	 0 	 EN35 	 5 	 VE6PDQ 	 DO34lr 	 1748 	 313 	 W-2   
+ 2023-05-29 23:12 	 KN0VA 	 10.140133 	 -15 	 0 	 EN35 	 5 	 WD4ELG 	 FM06be 	 1511 	 129 	 W-2   
+ ...  
 Be sure to save the headers with the data (api forthcoming)  
 
 ## xray data
