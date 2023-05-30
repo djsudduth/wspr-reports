@@ -1,5 +1,5 @@
 # wspr-reports
-Reports and charts for amateur radio wspr hf propagation accuracy measurements
+Reports and charts for amateur radio wspr hf performance using propagation accuracy measurements 
 
 ## wspr data
 Copy-paste data directly from wsprnet.org database query results page and save the data as 'wspr.txt' in the script folder. See example wspr.txt data in the repo. 
