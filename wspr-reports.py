@@ -62,12 +62,10 @@ def get_wspr_snr_trends(df):
 
     df2 = df2.reset_index()
     #print(df2.groupby('map')['std'].mean() + "\n\n")
-  
-
     df2 = df.groupby(['km', 'Reporter']).agg({'SNR':list}).reset_index()
 
     for index, row in df2.iterrows():
-        if len(row['SNR']) > 1: #only calculate for 3 or more reports from the same reporter
+        if len(row['SNR']) > 2: #only calculate for 3 or more reports from the same reporter
             s = list(range(len(row['SNR'])))
             slope, intercept = statistics.linear_regression(s, row['SNR'])
             stdv =  statistics.stdev(row['SNR'])
@@ -114,15 +112,6 @@ def get_wspr_snr_trends(df):
     print (df4.to_string() + "\n\n")
 
  
-
-
-
- 
-    
-
-
-
-
 
 def main():
     try:
