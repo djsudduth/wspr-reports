@@ -1,5 +1,6 @@
 # Report files
 *.csv
+*copy*
 
 
 # Byte-compiled / optimized / DLL files

@@ -1,5 +1,5 @@
 # wspr-reports
-Reports and charts for amateur radio wspr hf performance using propagation accuracy measurements 
+Reports and charts for amateur radio wspr hf performance using propagation accuracy measurements. The goal is to determine HF antenna performance based on a time series collection of wspr signal reports. 
 
 ## wspr data
 Copy-paste data directly from wsprnet.org database query results page and save the data as 'wspr.txt' in the script folder. See example wspr.txt data in the repo. 
@@ -21,9 +21,28 @@ The wspr and xray data will be joined on timestamp. Raw data outputs:
 3. View of reporter callsigns by map direction (using azimuth) from your location with SNR mean and standard deviation from at least 2 reports
 4. View of reporter callsigns by distance, SNR list, slope trend of the SNR, std deviation, and variance
 5. View of reporter callsigns by distance, GOES flux
-6. Mean of the trending slopes and variancesof SNR reports by map direction from your location (+slopes - trending stronger, -slopes - weaker)
+6. Mean of the trending slopes of SNR reports by map direction from your location (+slopes - trending stronger, -slopes - weaker)
+7. Mean of variances of the SNR reports by map direction from your location (large variances - widely varying reports)
 
 Data is saved as .csv files in the script directory.
+
+## example on how to use
+ - KN0VA transmitted wspr on 30m for about 1 hour 
+ - The GOES and wspr data is joined together by timestamp 
+ - For report #3 above - the wspr data has the lat/lon of KNOVA to determine map direction
+    - the report shows that wspr reporter KX4AZ/T which is 617km East of KNOVA has 21 reception reports with a wspr mean of -10.38 db and standard deviation of 3.73 db with a minimum report of -20.0 db / maximum of -6.0 db
+ - For report #4 above 
+    - the report shows the individual 21 receptions by KX4AZ/T along with the trending slope (increasing vs decreasing signal reports)
+ - For report #5
+    - shows the individual GOES reports for the same 21 time periods of KX4AZ/T receptions
+ - For report #6
+    - shows all the average slopes in one direction (KX4AZ/T is included in the list) and the trend of those slopes (are signals Eastward increasing or decreasing in report strength?)
+ - For report #7
+    - shows all the average variances of signal reports in one direction (KX4AZ/T is included in the list) and the trend of those variaces (are signals Eastward varying widely in report strength?)
+
+
+
+
 
 
 ## notes
