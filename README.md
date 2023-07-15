@@ -29,8 +29,8 @@ Data is saved as .csv files in the script directory.
 ## example on how to use
  - KN0VA transmitted wspr on 30m for about 1 hour 
  - The GOES and wspr data is joined together by timestamp 
- - For report #3 above - the wspr data has the lat/lon of KNOVA to determine map direction
-    - the report shows that wspr reporter KX4AZ/T which is 617km East of KNOVA has 21 reception reports with a wspr mean of -10.38 db and standard deviation of 3.73 db with a minimum report of -20.0 db / maximum of -6.0 db
+ - For report #3 above - the wspr data has the lat/lon of KN0VA to determine map direction
+    - the report shows that wspr reporter KX4AZ/T which is 617km East of KN0VA has 21 reception reports with a wspr mean of -10.38 db and standard deviation of 3.73 db with a minimum report of -20.0 db / maximum of -6.0 db
  - For report #4 above 
     - the report shows the individual 21 receptions by KX4AZ/T along with the trending slope (increasing vs decreasing signal reports)
  - For report #5
