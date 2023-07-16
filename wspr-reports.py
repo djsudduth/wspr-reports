@@ -24,9 +24,9 @@ def open_goes_xray_file():
 def join_wspr_with_goes(df, dfx):
     #join the GOES satellite 6-hour xray flux data with the wspr data and return join
     df = pd.merge(df, dfx, on='Timestamp', how='inner').reset_index()
-    print ("\n\nGOES data - first rows: ")
-    print (df.head(5))
-    input("Saving full wspr-goes-data.csv - press Enter to continue...")
+    #print ("\n\nGOES data - first rows: ")
+    #print (df.head(5))
+    #input("Saving full wspr-goes-data.csv - press Enter to continue...")
     df.to_csv("wspr-goes-data.csv")
     return(df)
 
@@ -39,9 +39,9 @@ def add_wspr_dimensions(df):
         df['map'] = pd.cut(df['az'], [0, 23, 68, 113, 158, 203, 248, 293, 337, 359], labels= ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N'], ordered=False)
         df['drange'] = pd.cut(df['km'], [0, 800, 4000, 8000, 13000], labels=['NEAR', 'MID', 'LONG', 'VLONG'])
         df = df.sort_values('Timestamp').reset_index()
-        print ("\n\nWSPR data - first rows: ")
+        print ("\n\nWSPR and GOES joined data - first rows: ")
         print (df.head(7) ) #+ "\n\n")
-        input("Press Enter to continue...")
+        #input("Press Enter to continue...")
         #print (df.loc[(df['map'] == 'NW') & (df['drange'] == 'MID')])
         return(df)
     else:
