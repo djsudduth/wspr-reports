@@ -2,7 +2,7 @@
 Reports and charts for amateur radio wspr hf performance using propagation accuracy measurements. The goal is to determine HF antenna performance based on a time series collection of wspr signal reports. 
 
 ## wspr data
-Copy-paste data directly from https://www.wsprnet.org/drupal/wsprnet/spotquery database query results page and save the data as 'wspr.txt' in the script folder. See example wspr.txt data in the repo. 
+Copy-paste data directly from https://www.wsprnet.org/drupal/wsprnet/spotquery database query results page and save the data as `wspr.txt` in the script folder. See example wspr.txt data in the repo. 
 
 Be sure to save the headers with the data (api forthcoming)  
 
