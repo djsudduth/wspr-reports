@@ -58,7 +58,7 @@ Copy-paste your data directly from https://www.wsprnet.org/drupal/wsprnet/spotqu
 **Be sure to save the headers with the data (api forthcoming)**  
 
 ## xray data
-Save GOES `xrays-6-hour.json` directly to same folder from https://services.swpc.noaa.gov/json/goes/primary/  
+Save GOES `xrays-6-hour.json` soon after directly to same folder from https://services.swpc.noaa.gov/json/goes/primary/  
 See example GOES data in the repo. 
 
 
