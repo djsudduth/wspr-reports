@@ -5,7 +5,7 @@ Background: Many amateurs utilize wspr reports to determine their overall HF sys
 **Relying on short duration wspr reports can lead to false assumptions and correlations regarding performance**.
 
 Examples: 
-The first report shows the wspr mean and std deviations by azimuth direction (N, E, S, W...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns:
+The first report shows the wspr means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns:
  
 `map  km   Reporter       count    mean      std     min    25%   50%    75%   max`  
 `S   731   AC0G            1.0 -29.000000        NaN -29.0 -29.00 -29.0 -29.00 -29.0`  
@@ -17,7 +17,20 @@ The first report shows the wspr mean and std deviations by azimuth direction (N,
 `    1733  N5BIA           1.0 -17.000000        NaN -17.0 -17.00 -17.0 -17.00 -17.0`  
 `    2185  WB5B            7.0 -15.714286   2.429972 -19.0 -17.50 -16.0 -13.50 -13.0`  
 
-In this example, all of the reports received south of my location 
+In this example, all of my 5w 30m reports received south (S) of my location over a 1 hour timespan show the number of received reports (count), the mean of the wspr report in db and the std deviation of the reports. K6RFT at 1164 km away in MO reported most often (7x) with a mean report of ~0db and a std deviation of 3.72. **A std deviation of 3.72 is a wide range of reception reports (min = -6.0db to max = 3.0db or a 9db variation in one hour)**
+
+The next report excerpt shows the values of the reports received by distance and their trending slopes (is my wspr report increasing over time or decreasing?). For example WA5DJJ shows a slope of 2.0 - significantly increasing SNR report to the SW from about -18.5db to -8.0db within an hour based on 7 reports. KG7YC is also increasing possibly implying better propagation to the SW.
+
+`       km      Reporter                                  SNR  slope   stdv  variance map`  
+`49   1748        VE6PDQ           [-3, -22, 3, -2, -21, -16]  -1.91  10.80     116.6  NW`  
+`50   1751          NI5F  [-18, -21, -22, -24, -21, -17, -21]   0.00   2.37       5.6  SE`  
+`51   1824         K1NPT                                [-23]   0.00   0.00       0.0   E`  
+`52   1827         W1NMF  [-15, -14, -14, -19, -14, -12, -14]   0.25   2.15       4.6   E`  
+`53   1829          K1BZ           [-5, -5, -5, -13, -12, -9]  -1.40   3.71      13.8   E`  
+`54   1877        WA5DJJ     [-18, -19, -18, -8, -12, -9, -8]   2.00   5.05      25.5  SW`  
+`55   2088       W7WKR/K            [-27, -28, -25, -24, -25]   0.80   1.64       2.7   W`  
+`56   2093         KG7YC  [-21, -20, -17, -21, -11, -22, -15]   0.71   4.02      16.1  SW`  
+
 
 
 # usage
