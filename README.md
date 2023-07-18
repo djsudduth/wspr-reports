@@ -7,9 +7,9 @@ Background: Many amateurs utilize wspr reports to determine their overall HF sys
 Examples: 
 The first report shows the wspr mean and std deviations by azimuth direction (N, E, S, W...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns:
  
-`map  km    Reporter        count    mean        std   min    25%   50%    75%   max`
-`S   731   AC0G            1.0 -29.000000        NaN -29.0 -29.00 -29.0 -29.00 -29.0`
-`    734   KV0S            3.0 -13.000000   1.732051 -14.0 -14.00 -14.0 -12.50 -11.0`
+`map  km    Reporter        count    mean        std   min    25%   50%    75%   max`  
+`S   731   AC0G            1.0 -29.000000        NaN -29.0 -29.00 -29.0 -29.00 -29.0`  
+`    734   KV0S            3.0 -13.000000   1.732051 -14.0 -14.00 -14.0 -12.50 -11.0`  
     918   K6RFT           7.0   0.285714   3.728909  -6.0  -1.50   2.0   3.00   3.0
     1164  W5JVS           6.0  -6.833333   3.600926 -12.0  -8.00  -7.0  -6.00  -1.0
     1475  KG5ABO          1.0 -21.000000        NaN -21.0 -21.00 -21.0 -21.00 -21.0
