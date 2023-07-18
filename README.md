@@ -34,12 +34,12 @@ The next report excerpt shows the values of the reports received by distance and
 `56   2093         KG7YC  [-21, -20, -17, -21, -11, -22, -15]   0.71   4.02      16.1  SW`  
 
 
-The last reports show slopes trending by direction from my callsign location. In other words, are the reports decreasing generally in a direction over the measured time period? In the example data below - clearly the most reports were from the W with an average positive slope possibly implying improving conditions to the west. Whereas, there may be decreasing conditions south (limited data).
+The last reports show slopes trending by direction from my callsign location. In other words, are the combined reports decreasing generally in a direction over the measured time period? In the example data below - clearly the most reports were from the W with an average positive slope possibly implying improving conditions to the west. Whereas, there may be decreasing conditions south (limited data).
 
-`  map                                                                                          slopes  snr trend`  
-`3   S                                                   [0.0, -1.5, -1.29, -0.6, 0.0, 0.0, 0.0, 0.57]  -0.352500`  
-`5  SW                                                                    [0.54, 1.64, 2.0, 0.71, 3.5]   1.678000`  
-`6   W   [2.36, 0.8, 0.71, 0.7, 0.86, 1.5, 1.6, 0.31, 0.71, 0.0, 0.0, 0.1, 0.7, 0.86, 0.54, 1.21, 0.0]   0.762353`  
+`  map                                                                     slopes  snr trend`  
+`3   S                              [0.0, -1.5, -1.29, -0.6, 0.0, 0.0, 0.0, 0.57]  -0.352500`  
+`5  SW                                               [0.54, 1.64, 2.0, 0.71, 3.5]   1.678000`  
+`6   W   [2.36, 0.8, 0.71, 0.7, 0.86, 1.5, 1.6,....., 0.7, 0.86, 0.54, 1.21, 0.0]   0.762353`  
 **note that averaging slopes of reception reports may be highly inaccurate due to distance and changing conditions**
 
 
@@ -50,7 +50,7 @@ Requirements - numpy and pandas  (`pip install`)
 ## wspr data
 Copy-paste data directly from https://www.wsprnet.org/drupal/wsprnet/spotquery database query results page and save the data as `wspr.txt` in the script folder. See example wspr.txt data in the repo. 
 
-Be sure to save the headers with the data (api forthcoming)  
+**Be sure to save the headers with the data (api forthcoming)**  
 
 ## xray data
 Save GOES `xrays-6-hour.json` directly to same folder from https://services.swpc.noaa.gov/json/goes/primary/  
@@ -60,8 +60,9 @@ See example GOES data in the repo.
 Map direction is determined by your callsign location in the wspr.org results with this mapping deg to direction:  
 [0, 23, 68, 113, 158, 203, 248, 293, 337, 359] map to labels ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N']
 
-Execute:  
-`python wspr-reports.py`    
+**To Execute:**   
+`python wspr-reports.py`      
+
 The wspr and xray data will be joined on timestamp. Raw data outputs:
 1. wspr data with additional fields of direction from your location and distance classification (file only)
 2. Joined wspr and GOES data on timestamp (file only)
