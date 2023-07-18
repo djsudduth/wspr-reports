@@ -1,10 +1,11 @@
 # wspr-reports
-Reports and charts for amateur radio wspr hf performance using propagation accuracy measurements. The goal is to determine HF antenna performance based on a time series collection of wspr signal reports. 
+Reports and charts for amateur radio wspr hf performance using propagation accuracy measurements. The goal is to determine HF antenna performance based on a time series collection of wspr signal reports. Reports are saved as CSV files for analysis either using spreadsheets or other tools.
 
-Background: Many amateurs utilize wspr reports to determine their overall HF system performance. However, widely variable factors affect wspr reports by distant stations. These can include time of day, solar x-ray flux, ionospheric variations, etc. 
+## Background
+Many amateurs utilize wspr reports to determine their overall HF system performance. However, widely variable factors affect wspr reports by distant stations. These can include time of day, solar x-ray flux, ionospheric variations, etc.   
 **Relying on short duration wspr reports can lead to false assumptions and correlations regarding performance**.
 
-Examples: 
+## Examples
 The first report shows the wspr means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns:
  
 `map  km   Reporter       count    mean      std     min    25%   50%    75%   max`  
@@ -17,7 +18,8 @@ The first report shows the wspr means and std deviations by azimuth direction (N
 `    1733  N5BIA           1.0 -17.000000        NaN -17.0 -17.00 -17.0 -17.00 -17.0`  
 `    2185  WB5B            7.0 -15.714286   2.429972 -19.0 -17.50 -16.0 -13.50 -13.0`  
 
-In this example, all of my 5w 30m reports received south (S) of my location over a 1 hour timespan show the number of received reports (count), the mean of the wspr report in db and the std deviation of the reports. K6RFT at 1164 km away in MO reported most often (7x) with a mean report of ~0db and a std deviation of 3.72. **A std deviation of 3.72 is a wide range of reception reports (min = -6.0db to max = 3.0db or a 9db variation in one hour)**
+In this example, all of my 5w 30m reports received south (S) of my location over a 1 hour timespan show the number of received reports (count), the mean of the wspr report in db and the std deviation of the reports. K6RFT at 1164 km away in MO reported most often (7x) with a mean report of ~0db and a std deviation of 3.72.   
+**A std deviation of 3.72 is a wide range of reception reports (min = -6.0db to max = 3.0db or a 9db variation in one hour)**
 
 The next report excerpt shows the values of the reports received by distance and their trending slopes (is my wspr report increasing over time or decreasing?). For example WA5DJJ shows a slope of 2.0 - significantly increasing SNR report to the SW from about -18.5db to -8.0db within an hour based on 7 reports. KG7YC is also increasing possibly implying better propagation to the SW.
 
@@ -30,6 +32,15 @@ The next report excerpt shows the values of the reports received by distance and
 `54   1877        WA5DJJ     [-18, -19, -18, -8, -12, -9, -8]   2.00   5.05      25.5  SW`  
 `55   2088       W7WKR/K            [-27, -28, -25, -24, -25]   0.80   1.64       2.7   W`  
 `56   2093         KG7YC  [-21, -20, -17, -21, -11, -22, -15]   0.71   4.02      16.1  SW`  
+
+
+The last reports show slopes trending by direction from my callsign location. In other words, are the reports decreasing generally in a direction over the measured time period? In the example data below - clearly the most reports were from the W with an average positive slope possibly implying improving conditions to the west. Whereas, there may be decreasing conditions south (limited data).
+
+`  map                                                                                          slopes  snr trend`  
+`3   S                                                   [0.0, -1.5, -1.29, -0.6, 0.0, 0.0, 0.0, 0.57]  -0.352500`  
+`5  SW                                                                    [0.54, 1.64, 2.0, 0.71, 3.5]   1.678000`  
+`6   W   [2.36, 0.8, 0.71, 0.7, 0.86, 1.5, 1.6, 0.31, 0.71, 0.0, 0.0, 0.1, 0.7, 0.86, 0.54, 1.21, 0.0]   0.762353`  
+**note that averaging slopes of reception reports may be highly inaccurate due to distance and changing conditions**
 
 
 
@@ -69,28 +80,29 @@ Data is saved as .csv files in the script directory.
  - For report #4 above 
     - the report shows the individual 21 receptions by KX4AZ/T along with the trending slope of -0.23 (increasing vs decreasing signal reports)
  - For report #5
-    - shows the individual GOES reports for the same 21 time periods of KX4AZ/T receptions
- - For report #6
     - shows all the average slopes in one direction (KX4AZ/T is included in the East list) and the trend of those slopes (are signals Eastward increasing or decreasing in report strength?)
- - For report #7
+ - For report #6
     - shows all the average variances of signal reports in one direction (KX4AZ/T is included in the East list) and the trend of those variaces (shows if signals Eastward varying widely in report strength)
 
 
 ## notes
-Note that wspr SNRs vary by a standard deviation of typically around 2.0+ db even when xray flux is low and steady. This is independent of distance. Example:  
+Note that wspr SNRs vary by a standard deviation of typically around 2.0+ db even when xray flux is low and steady. This is independent of distance. 
+
+Example:  
 KD2OM at 1270 km had snr reported values of [-11, -16, -13, -13] over a 45 min span midday on 30m -> std dev = 2.06,  variance = 4.2   
 or   
 LX1DQ at 6885 km had snr values of [-16, -19, -19, -18, -16, -14, -16] over 1 hour span midday on 30m ->std dev = 1.86, variance = 3.5  
 
 Data measurements over 1-2 hours should consider D-layer ionization variability based on time of day, frequency and GOES spikes. Also, using SNRs for antenna performance characteristics should consider the std dev variability of SNR reports along with sporadic receptions from reporters that may appear or fade based on atmospheric changes. 
 
-Changing antenna configurations and using this data to understand performance should consider multiple wspr calls throughout the day over a number of days. Shorter measurements can lead to misinterpreted results.
+**Changing antenna configurations and using this data to understand performance should consider multiple wspr calls throughout the day over a number of days. Shorter measurements can lead to misinterpreted results.**
 
 ## example range of data
 ![GOES data range for example](goes-data-range.png)
 
 
 ## release
-v0.0.1 - 05/29/2023
+v0.0.1 - 05/29/2023  
+v0.0.2 - 07/17/2023  
 
 Thank you!  KN0VA
