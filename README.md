@@ -3,7 +3,9 @@ Reports and charts for amateur radio wspr hf performance using propagation accur
 
 ## Background
 Many amateurs utilize wspr reports to determine their overall HF system performance. However, widely variable factors affect wspr reports by distant stations. These can include time of day, solar x-ray flux, ionospheric variations, etc.   
-**Relying on short duration wspr reports can lead to false assumptions and correlations regarding performance**.
+**Relying on short duration wspr reports can lead to false assumptions and correlations regarding performance**.  
+
+For these reports GOES 16-short data is joined with the wspr data to determine x-ray flux over the measured time period.  
 
 ## Examples
 The first report shows the wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns:
@@ -47,8 +49,11 @@ The raw joined CSV data is saved for additional analytics (`wspr-goes-data.csv`)
 # usage
 Requirements - numpy and pandas  (`pip install`)
 
+## transmit wpsr
+Transmit wspr from your location for a specified time period (1-2 hours is a good baseline)  
+
 ## wspr data
-Copy-paste data directly from https://www.wsprnet.org/drupal/wsprnet/spotquery database query results page and save the data as `wspr.txt` in the script folder. See example wspr.txt data in the repo. 
+Copy-paste your data directly from https://www.wsprnet.org/drupal/wsprnet/spotquery database query results page and save the data as `wspr.txt` in the script folder. See example wspr.txt data in the repo. 
 
 **Be sure to save the headers with the data (api forthcoming)**  
 
