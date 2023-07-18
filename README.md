@@ -10,7 +10,7 @@ For these reports GOES 16-short data is joined with the wspr data to determine x
 ## Examples
 The first report shows the wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns:
  
-`map  km   Reporter       count    mean      std     min    25%   50%    75%   max`  
+`map  km   Reporter        count    mean       std     min    25%   50%    75%   max`  
 `S   731   AC0G            1.0 -29.000000        NaN -29.0 -29.00 -29.0 -29.00 -29.0`  
 `    734   KV0S            3.0 -13.000000   1.732051 -14.0 -14.00 -14.0 -12.50 -11.0`  
 `    918   K6RFT           7.0   0.285714   3.728909  -6.0  -1.50   2.0   3.00   3.0`  
