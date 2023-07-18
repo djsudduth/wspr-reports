@@ -18,6 +18,7 @@ def open_goes_xray_file():
     dfx = dfx.iloc[::2]
     dfx = dfx.rename(columns={'time_tag':'Timestamp'})
     dfx.flux = dfx.flux.apply(float).round(12)
+    dfx['modflux'] = dfx['flux'] * 1e8
     return(dfx)
 
 
@@ -34,6 +35,7 @@ def join_wspr_with_goes(df, dfx):
 def add_wspr_dimensions(df):
     if 'Timestamp' in df.columns:
         df['Timestamp'] = df['Timestamp'].str.strip()
+        df['Time'] = df['Timestamp'].str[-5:]
         df['Timestamp'] = df['Timestamp'].str.replace(" ", "T") +":00Z"
         df['Reporter'] = df['Reporter'].str.strip()
         df['map'] = pd.cut(df['az'], [0, 23, 68, 113, 158, 203, 248, 293, 337, 359], labels= ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N'], ordered=False)
@@ -41,7 +43,7 @@ def add_wspr_dimensions(df):
         df = df.sort_values('Timestamp').reset_index()
         print ("\n\nWSPR and GOES joined data - first rows: ")
         print (df.head(7) ) #+ "\n\n")
-        #input("Press Enter to continue...")
+        input("Press Enter to continue...")
         #print (df.loc[(df['map'] == 'NW') & (df['drange'] == 'MID')])
         return(df)
     else:
@@ -61,7 +63,6 @@ def get_wspr_snr_trends(df):
     input("Saving wspr-map-trends.csv - press Enter to continue...")
 
     df2 = df2.reset_index()
-    #print(df2.groupby('map')['std'].mean() + "\n\n")
     df2 = df.groupby(['km', 'Reporter']).agg({'SNR':list}).reset_index()
 
     for index, row in df2.iterrows():
@@ -89,27 +90,24 @@ def get_wspr_snr_trends(df):
     input("Saving wspr-trends-distance.csv - press Enter to continue...")
     df2.to_csv("wspr-trends-distance.csv")
     df2 = df2.reset_index()
-    #print (df.loc[(df['Reporter'] == row['Reporter'])].iloc[0]['map'])
-    #print (df.loc[(df['Reporter'] == 'N9AWU')].iloc[0]['map'])
 
-    df5 = df.groupby(['km', 'Reporter']).agg({'flux':list}).reset_index()
-    print ("\n\nGOES flux by Reporting callsign: ")
-    print (df5.to_string() + "\n\n")
-    input("Press Enter to continue...")
-
+    df3 = df.groupby(['km', 'Reporter']).agg({'flux':list}).reset_index()
+    #print ("\n\nGOES flux by Reporting callsign: ")
+    #print (df3.to_string() + "\n\n")
+    #input("Press Enter to continue...")
 
     print ("\n\nSNR trending slopes by map direction from your callsign location: ")
-    df3 = df2.groupby('map').agg({'slope':list}).reset_index()
-    df3['snr trend'] = [np.array(x).mean() for x in df3.slope.values]
+    df4 = df2.groupby('map').agg({'slope':list}).reset_index()
+    df4['snr trend'] = [np.array(x).mean() for x in df4.slope.values]
     #df2['var mean'] = [np.array(x).mean() for x in df2.variance.values]
-    print (df3.to_string() + "\n\n")
-    df3.to_csv("wspr-trends-by-azimuth.csv")
+    print (df4.to_string() + "\n\n")
+    df4.to_csv("wspr-trends-by-azimuth.csv")
     input("Saving wspr-trends-by-azimuth.csv - press Enter to continue...")
 
     print ("\n\nSNR variances by map direction from your callsign location: ")
-    df4 = df2.groupby('map').agg({'variance':list}).reset_index()
-    df4['var trend'] = [np.array(x).mean() for x in df4.variance.values]
-    print (df4.to_string() + "\n\n")
+    df5 = df2.groupby('map').agg({'variance':list}).reset_index()
+    df5['var trend'] = [np.array(x).mean() for x in df5.variance.values]
+    print (df5.to_string() + "\n\n")
 
  
 
