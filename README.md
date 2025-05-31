@@ -10,7 +10,7 @@ For these reports GOES 16-short data is joined with the wspr data to determine x
 ## Examples
 
 ![wspr polar plot](wspr_snr_polar_plot.png)
-This graph shows the wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns. The bars radiating from the center show the mean SNR report with the Std Dev being the gray at the end of each. The colors of the bars represent the distance ranges for the groups of reporters in the mapped direction.
+This graph shows the wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns. The bars radiating from the center show the mean SNR report with the Std Dev being the gray at the end of each. The colors of the bars represent the distance ranges for the groups of reporters in the mapped direction. There are also small labels (N=value) showing how many reporters are in the direction/range.
 
 For example - for the general E direction, reporting stations located between 800 and 3000 km (orange bars) have a mean SNR of -14.8 db with a std dev of 3.2 db. Whereas, close stations 0 - 800 km have a mean of -23.0 db / std dev of 3.5 db. There were no reception reports from stations E over 3000 km.
 
@@ -32,34 +32,9 @@ In this data example, all of my 5w 30m SNR reports received south (S) of my loca
 ![time series plot](wspr_xray_timeseries_plot.png)
 The next report excerpt shows the time-series values of the SNR reports for 3 randomized station in the SE within the range (800 - 3000 km) compared to the GOES flux at the time. In this example three reporting stations (WD4ELG, KU4A and WD8ING) are mapped with the GOES flux (red dotted line) at the same time.
 
-
-
-
- received by distance and their trending slopes (is my wspr report increasing over time or decreasing?). For example WA5DJJ shows a slope of 2.0 - significantly increasing SNR report to the SW from about -18.5db to -8.0db within an hour based on 7 reports. KG7YC is also increasing possibly implying better propagation to the SW.
-
-`       km      Reporter                                  SNR  slope   stdv  variance map`  
-`49   1748        VE6PDQ           [-3, -22, 3, -2, -21, -16]  -1.91  10.80     116.6  NW`  
-`50   1751          NI5F  [-18, -21, -22, -24, -21, -17, -21]   0.00   2.37       5.6  SE`  
-`51   1824         K1NPT                                [-23]   0.00   0.00       0.0   E`  
-`52   1827         W1NMF  [-15, -14, -14, -19, -14, -12, -14]   0.25   2.15       4.6   E`  
-`53   1829          K1BZ           [-5, -5, -5, -13, -12, -9]  -1.40   3.71      13.8   E`  
-`54   1877        WA5DJJ     [-18, -19, -18, -8, -12, -9, -8]   2.00   5.05      25.5  SW`  
-`55   2088       W7WKR/K            [-27, -28, -25, -24, -25]   0.80   1.64       2.7   W`  
-`56   2093         KG7YC  [-21, -20, -17, -21, -11, -22, -15]   0.71   4.02      16.1  SW`  
-
-
-The last reports show slopes trending by direction from my callsign location. In other words, are the combined reports decreasing generally in a direction over the measured time period? In the example data below - clearly the most reports were from the W with an average positive slope possibly implying improving conditions to the west. Whereas, there may be decreasing conditions south (limited data).
-
-`  map                                                                     slopes  snr trend`  
-`3   S                              [0.0, -1.5, -1.29, -0.6, 0.0, 0.0, 0.0, 0.57]  -0.352500`  
-`5  SW                                               [0.54, 1.64, 2.0, 0.71, 3.5]   1.678000`  
-`6   W   [2.36, 0.8, 0.71, 0.7, 0.86, 1.5, 1.6,....., 0.7, 0.86, 0.54, 1.21, 0.0]   0.762353`  
-**note that averaging slopes of reception reports may be highly inaccurate due to distance and changing conditions**
-
-The raw joined CSV data is saved for additional analytics (`wspr-goes-data.csv`)
-
 # usage
-Requirements - numpy and pandas  (`pip install`)
+Requirements - python, numpy and pandas  (`pip install`)
+Run `python wspr-reports.py` to generate graphs (gather data first - see below)
 
 ## transmit wpsr
 Transmit wspr from your location for a specified time period (1-2 hours is a good baseline)  
@@ -73,12 +48,8 @@ Copy-paste your data directly from https://www.wsprnet.org/drupal/wsprnet/spotqu
 Save GOES `xrays-6-hour.json` soon after directly to same folder from https://services.swpc.noaa.gov/json/goes/primary/  
 See example GOES data in the repo. 
 
-
 Map direction is determined by your callsign location in the wspr.org results with this mapping deg to direction:  
 [0, 23, 68, 113, 158, 203, 248, 293, 337, 359] map to labels ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N']
-
-**To Execute:**   
-`python wspr-reports.py`      
 
 The wspr and xray data will be joined on timestamp. Raw data outputs:
 1. wspr data with additional fields of direction from your location and distance classification (file only)
@@ -88,7 +59,7 @@ The wspr and xray data will be joined on timestamp. Raw data outputs:
 5. Mean of the trending slopes of SNR reports by map direction from your location (+slopes - trending stronger, -slopes - weaker)
 6. Mean of variances of the SNR reports by map direction from your location (large variances - widely varying reports)
 
-Data is saved as .csv files in the script directory 
+Data is saved as .png and .csv files in the script directory 
 
 ## example on how to use
  - KN0VA transmitted wspr on 30m for about 1 hour 
