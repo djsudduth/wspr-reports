@@ -12,7 +12,7 @@ For these reports GOES 16-short data is joined with the wspr data to determine x
 ![wspr polar plot](wspr_snr_polar_plot.png)
 This graph shows the wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns. The bars radiating from the center show the mean SNR report with the Std Dev being the gray at the end of each. The colors of the bars represent the distance ranges for the groups of reporters in the mapped direction.
 
-For example - for the general E direction, reporting stations located between 800 and 3000 km (orange bars) have a mean SNR of -14.8 db with a std dev of 3.2 db. Whereas, close stations 0 - 800 km have a mean of -23.0 db / std dev of 3.5 db. There were no reception from stations E over 3000 km.
+For example - for the general E direction, reporting stations located between 800 and 3000 km (orange bars) have a mean SNR of -14.8 db with a std dev of 3.2 db. Whereas, close stations 0 - 800 km have a mean of -23.0 db / std dev of 3.5 db. There were no reception reports from stations E over 3000 km.
 
 Here's what the data looks like:
  
@@ -29,8 +29,13 @@ Here's what the data looks like:
 In this data example, all of my 5w 30m SNR reports received south (S) of my location over a 1 hour timespan show the number of received reports (count), the mean of the wspr report in db and the std deviation of the reports. K6RFT at 1164 km away in MO reported most often (7x) with a mean SNR report of ~0db and a std deviation of 3.72.   
 **A std deviation of 3.72 is a wide range of reception reports (min = -6.0db to max = 3.0db or a 9db variation in one hour)**
 
+![time series plot](wspr_xray_timeseries_plot.png)
+The next report excerpt shows the time-series values of the SNR reports for 3 randomized station compared to the GOES flux at the time.
 
-The next report excerpt shows the time-series values of the SNR reports received by distance and their trending slopes (is my wspr report increasing over time or decreasing?). For example WA5DJJ shows a slope of 2.0 - significantly increasing SNR report to the SW from about -18.5db to -8.0db within an hour based on 7 reports. KG7YC is also increasing possibly implying better propagation to the SW.
+
+
+
+ received by distance and their trending slopes (is my wspr report increasing over time or decreasing?). For example WA5DJJ shows a slope of 2.0 - significantly increasing SNR report to the SW from about -18.5db to -8.0db within an hour based on 7 reports. KG7YC is also increasing possibly implying better propagation to the SW.
 
 `       km      Reporter                                  SNR  slope   stdv  variance map`  
 `49   1748        VE6PDQ           [-3, -22, 3, -2, -21, -16]  -1.91  10.80     116.6  NW`  
@@ -117,5 +122,6 @@ Data measurements over 1-2 hours should consider D-layer ionization variability 
 ## release
 v0.0.1 - 05/29/2023  
 v0.0.2 - 07/17/2023  
+v0.0.3 - 05/31/2025
 
 Thank you!  KN0VA
