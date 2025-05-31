@@ -32,9 +32,10 @@ In this data example, all of my 5w 30m SNR reports received south (S) of my loca
 ![time series plot](wspr_xray_timeseries_plot.png)
 The next report excerpt shows the time-series values of the SNR reports for 3 randomized station in the SE within the range (800 - 3000 km) compared to the GOES flux at the time. In this example three reporting stations (WD4ELG, KU4A and WD8ING) are mapped with the GOES flux (red dotted line) at the same time.
 
-# usage
+# Usage
 Requirements - python, numpy and pandas  (`pip install`)
-Run `python wspr-reports.py` to generate graphs (gather data first - see below)
+
+Run `python wspr-reports.py` to generate graphs (you can run it immediately against the sample data or gather your own data first - see next)
 
 ## transmit wpsr
 Transmit wspr from your location for a specified time period (1-2 hours is a good baseline)  
@@ -51,27 +52,23 @@ See example GOES data in the repo.
 Map direction is determined by your callsign location in the wspr.org results with this mapping deg to direction:  
 [0, 23, 68, 113, 158, 203, 248, 293, 337, 359] map to labels ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N']
 
+## after execution
 The wspr and xray data will be joined on timestamp. Raw data outputs:
 1. wspr data with additional fields of direction from your location and distance classification (file only)
-2. Joined wspr and GOES data on timestamp (file only)
-3. View of reporter callsigns by map direction (using azimuth) from your location with SNR mean and standard deviation from at least 2 reports
-4. View of reporter callsigns by distance, SNR list, slope trend of the SNR, std deviation, and variance
-5. Mean of the trending slopes of SNR reports by map direction from your location (+slopes - trending stronger, -slopes - weaker)
-6. Mean of variances of the SNR reports by map direction from your location (large variances - widely varying reports)
+2. Joined wspr and GOES data on timestamp 
+3. View of reporter callsigns by map direction (using azimuth) from your location with SNR mean and standard deviation 
+4. View of 3 random reporter callsigns by one distance range along with the GOES data at the time
 
 Data is saved as .png and .csv files in the script directory 
 
 ## example on how to use
  - KN0VA transmitted wspr on 30m for about 1 hour 
  - The GOES and wspr data is joined together by timestamp in a file
- - For report #3 above - the wspr data has the lat/lon of KN0VA to determine map direction
-    - the report shows that wspr reporter KX4AZ/T which is 617km East of KN0VA has 21 reception reports with a wspr mean of -10.38 db and standard deviation of 3.73 db with a minimum report of -20.0 db / maximum of -6.0 db
- - For report #4 above 
-    - the report shows the individual 21 receptions by KX4AZ/T along with the trending slope of -0.23 (increasing vs decreasing signal reports)
- - For report #5
-    - shows all the average slopes in one direction (KX4AZ/T is included in the East list) and the trend of those slopes (are signals Eastward increasing or decreasing in report strength?)
- - For report #6
-    - shows all the average variances of signal reports in one direction (KX4AZ/T is included in the East list) and the trend of those variaces (shows if signals Eastward varying widely in report strength)
+ - For reports  - the wspr data has the lat/lon of KN0VA to determine map direction
+    - the data file `wspr-map-trends.csv` shows that wspr reporter KX4AZ/T which is 617km East of KN0VA has 7 reception reports with a wspr mean of -23.0 db and standard deviation of 3.5 db with a minimum report of -27.0 db / maximum of -17.0 db
+ - For the polar plot above 
+    - the report shows 31 reporter receptions SW in the range of 800-3000 km with a mean SNR of -10.0db and no other reports from any other ranges
+
 
 
 ## notes
