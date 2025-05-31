@@ -10,7 +10,11 @@ For these reports GOES 16-short data is joined with the wspr data to determine x
 ## Examples
 
 ![wspr polar plot](wspr_snr_polar_plot.png)
-The first report shows the wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns. The directions are generalized to N, NE, E, SE, S, SW, W, and NW:
+This graph shows the wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns. The bars radiating from the center show the mean SNR report with the Std Dev being the gray at the end of each. The colors of the bars represent the distance ranges for the groups of reporters in the mapped direction.
+
+For example - for the general E direction, reporting stations located between 800 and 3000 km (orange bars) have a mean SNR of -14.8 db with a std dev of 3.2 db. Whereas, close stations 0 - 800 km have a mean of -23.0 db / std dev of 3.5 db. There were no reception from stations E over 3000 km.
+
+Here's what the data looks like:
  
 `map  km   Reporter        count    mean       std     min    25%   50%    75%   max`  
 `S   731   AC0G            1.0 -29.000000        NaN -29.0 -29.00 -29.0 -29.00 -29.0`  
@@ -22,7 +26,7 @@ The first report shows the wspr SNR means and std deviations by azimuth directio
 `    1733  N5BIA           1.0 -17.000000        NaN -17.0 -17.00 -17.0 -17.00 -17.0`  
 `    2185  WB5B            7.0 -15.714286   2.429972 -19.0 -17.50 -16.0 -13.50 -13.0`  
 
-In this example, all of my 5w 30m SNR reports received south (S) of my location over a 1 hour timespan show the number of received reports (count), the mean of the wspr report in db and the std deviation of the reports. K6RFT at 1164 km away in MO reported most often (7x) with a mean SNR report of ~0db and a std deviation of 3.72.   
+In this data example, all of my 5w 30m SNR reports received south (S) of my location over a 1 hour timespan show the number of received reports (count), the mean of the wspr report in db and the std deviation of the reports. K6RFT at 1164 km away in MO reported most often (7x) with a mean SNR report of ~0db and a std deviation of 3.72.   
 **A std deviation of 3.72 is a wide range of reception reports (min = -6.0db to max = 3.0db or a 9db variation in one hour)**
 
 
