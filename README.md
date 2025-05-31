@@ -8,7 +8,9 @@ Many amateurs utilize wspr reports to determine their overall HF system performa
 For these reports GOES 16-short data is joined with the wspr data to determine x-ray flux over the measured time period.  
 
 ## Examples
-The first report shows the wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns:
+
+![wspr polar plot](wspr_snr_polar_plot.png)
+The first report shows the wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns. The directions are generalized to N, NE, E, SE, S, SW, W, and NW:
  
 `map  km   Reporter        count    mean       std     min    25%   50%    75%   max`  
 `S   731   AC0G            1.0 -29.000000        NaN -29.0 -29.00 -29.0 -29.00 -29.0`  
@@ -22,6 +24,7 @@ The first report shows the wspr SNR means and std deviations by azimuth directio
 
 In this example, all of my 5w 30m SNR reports received south (S) of my location over a 1 hour timespan show the number of received reports (count), the mean of the wspr report in db and the std deviation of the reports. K6RFT at 1164 km away in MO reported most often (7x) with a mean SNR report of ~0db and a std deviation of 3.72.   
 **A std deviation of 3.72 is a wide range of reception reports (min = -6.0db to max = 3.0db or a 9db variation in one hour)**
+
 
 The next report excerpt shows the time-series values of the SNR reports received by distance and their trending slopes (is my wspr report increasing over time or decreasing?). For example WA5DJJ shows a slope of 2.0 - significantly increasing SNR report to the SW from about -18.5db to -8.0db within an hour based on 7 reports. KG7YC is also increasing possibly implying better propagation to the SW.
 
