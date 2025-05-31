@@ -30,7 +30,7 @@ In this data example, all of my 5w 30m SNR reports received south (S) of my loca
 **A std deviation of 3.72 is a wide range of reception reports (min = -6.0db to max = 3.0db or a 9db variation in one hour)**
 
 ![time series plot](wspr_xray_timeseries_plot.png)
-The next report excerpt shows the time-series values of the SNR reports for 3 randomized station compared to the GOES flux at the time.
+The next report excerpt shows the time-series values of the SNR reports for 3 randomized station in the SE within the range (800 - 3000 km) compared to the GOES flux at the time. In this example three reporting stations (WD4ELG, KU4A and WD8ING) are mapped with the GOES flux (red dotted line) at the same time.
 
 
 
