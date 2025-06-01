@@ -1,6 +1,7 @@
 # Report files
 *.csv
 *copy*
+.DS_Store
 
 
 # Byte-compiled / optimized / DLL files
