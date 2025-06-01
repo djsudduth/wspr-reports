@@ -8,9 +8,10 @@ Many amateurs utilize wspr reports to determine their overall HF system performa
 For these reports GOES 16-short data is joined with the wspr data to determine x-ray flux over the measured time period.  
 
 ## Examples
+30m WSPR for 80 minutes ~22:00 UTC
 
 ![wspr polar plot](wspr_snr_polar_plot.png)
-This graph shows the wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns. The bars radiating from the center show the mean SNR report (**longer bar means stronger mean signals from that general direction**) with the Std Dev being the gray at the end of each. The colors of the bars represent the distance ranges for the groups of reporters in the mapped direction. There are also small labels (N=value) showing how many reporters are in the direction/range.
+This graph shows the 30 meter wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns. The bars radiating from the center show the mean SNR report (**longer bar means stronger mean signals from that general direction**) with the Std Dev being the gray at the end of each. The colors of the bars represent the distance ranges for the groups of reporters in the mapped direction. There are also small labels (N=value) showing how many reporters are in the direction/range.
 
 For example - for the general E direction, reporting stations located between 800 and 3000 km (orange bars) have a mean SNR of -14.8 db with a std dev of 3.2 db. Whereas, close stations 0 - 800 km have a mean of -23.0 db / std dev of 3.5 db. There were no reception reports from stations E over 3000 km.
 
