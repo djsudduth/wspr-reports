@@ -1,5 +1,5 @@
 # wspr-reports
-Reports and charts for amateur radio wspr hf performance using propagation accuracy measurements. The goal is to determine HF antenna performance based on a time series collection of wspr signal reports. Reports are saved as CSV files for analysis either using spreadsheets or other tools.
+Reports and charts for amateur radio wspr hf performance using propagation accuracy measurements. The goal is to determine HF antenna performance based on a time series collection of wspr signal reports. Reports are saved as CSV files for analysis either using plots, spreadsheets or other tools.
 
 ## Background
 Many amateurs utilize wspr reports to determine their overall HF system performance. However, widely variable factors affect wspr reports by distant stations. These can include time of day, solar x-ray flux, ionospheric variations, etc.   
@@ -9,11 +9,10 @@ For these reports GOES 16-short data is joined with the wspr data to determine x
 
 ## Examples
 30m WSPR for 80 minutes ~22:00 UTC
-
 ![wspr polar plot](wspr_snr_polar_plot.png)
-This graph shows the 30 meter wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns. The bars radiating from the center show the mean SNR report (**longer bar means stronger mean signals from that general direction**) with the Std Dev being the gray at the end of each. The colors of the bars represent the distance ranges for the groups of reporters in the mapped direction. There are also small labels (N=value) showing how many reporters are in the direction/range.
+This graph shows the 30 meter wspr SNR means and std deviations by azimuth direction (N, NE, E, SE, S, SW...) from my location (determined by the wsprnet.org data) based on the number of reception reports by monitoring callsigns. The bars radiating from the center show the mean SNR report (**longer bar means stronger mean signal reports from that general direction**) with the Std Dev being the gray at the end of each. The colors of the bars represent the distance ranges for the groups of reporters in the mapped direction. There are also small labels (N=value) showing how many reporters are in the direction/range.
 
-For example - for the general E direction, reporting stations located between 800 and 3000 km (orange bars) have a mean SNR of -14.8 db with a std dev of 3.2 db. Whereas, close stations 0 - 800 km have a mean of -23.0 db / std dev of 3.5 db. There were no reception reports from stations E over 3000 km.
+For example - for the general E direction, reporting stations located between 800 and 3000 km (orange bars) have a mean SNR of -14.8 db from 98 reports with a std dev of 3.2 db. Whereas, close stations 0 - 800 km have a mean of -23.0 db from only 7 reports with a std dev of 3.5 db. There were no reception reports from stations E over 3000 km.
 
 Here's what the data looks like:
  
@@ -72,7 +71,7 @@ Data is saved as .png and .csv files in the script directory
 
 
 
-## notes
+## Notes
 Note that wspr SNRs vary by a standard deviation of typically around 2.0+ db even when xray flux is low and steady. This is independent of distance. 
 
 Example:  
@@ -80,7 +79,7 @@ KD2OM at 1270 km had snr reported values of [-11, -16, -13, -13] over a 45 min s
 or   
 LX1DQ at 6885 km had snr values of [-16, -19, -19, -18, -16, -14, -16] over 1 hour span midday on 30m ->std dev = 1.86, variance = 3.5  
 
-Data measurements over 1-2 hours should consider D-layer ionization variability based on time of day, frequency and GOES spikes. Also, using SNRs for antenna performance characteristics should consider the std dev variability of SNR reports along with sporadic receptions from reporters that may appear or fade based on atmospheric changes. 
+Data measurements over 1-2 hours should consider D-layer ionization variability based on time of day, frequency and GOES spikes. Also, using SNRs for antenna performance characteristics should consider the std dev variability of SNR reports along with sporadic receptions from reporters that may appear or fade based on ionospheric changes. 
 
 **Changing antenna configurations and using this data to understand performance should consider multiple wspr calls throughout the day over a number of days. Shorter measurements can lead to misinterpreted results.**
 
