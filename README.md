@@ -33,7 +33,7 @@ In this data example, all of my 5w 30m SNR reports received south (S) of my loca
 The next report excerpt shows the time-series values of the SNR reports for 3 randomized station in the SE within the range (800 - 3000 km) compared to the GOES flux at the time. In this example three reporting stations (WD4ELG, KU4A and WD8ING) are mapped with the GOES flux (red dotted line) at the same time.
 
 # Usage
-Requirements - python, numpy and pandas  (`pip install`)
+Requirements - python, numpy, pandas, matplotlib - run (`pip install numpy pandas matplotlib`)
 
 Run `python wspr-reports.py` to generate graphs (you can run it immediately against the sample data or gather your own data first - see next)
 
