@@ -48,7 +48,7 @@ Copy-paste your data directly from https://www.wsprnet.org/drupal/wsprnet/spotqu
 **Be sure to save the headers with the data (api forthcoming)**  
 
 ## xray data
-Save GOES `xrays-6-hour.json` soon after directly to same folder from https://services.swpc.noaa.gov/json/goes/primary/  
+You can run this script with the `python wspr-reports.py -x` flag to automatically save the the GOES `xrays-6-hour.json` data. Do this only once, otherwise the time series will be overwritten and continue without WSPR data. You an also just manually download GOES `xrays-6-hour.json` directly to same folder from https://services.swpc.noaa.gov/json/goes/primary/ soon after finishing up WSPR trasmissions.
 See example GOES data in the repo. 
 
 Map direction is determined by your callsign location in the wspr.org results with this mapping deg to direction:  

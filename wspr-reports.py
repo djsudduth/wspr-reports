@@ -1,4 +1,6 @@
 import io
+import sys
+import argparse
 import statistics
 import numpy as np
 import pandas as pd
@@ -28,10 +30,17 @@ def open_wspr_file():
     df = pd.read_csv("wspr.txt", sep='\t')
     return (df)
 
-def open_goes_xray_file():
+def open_goes_xray_file(xray_download):
     #open the GOES satellite 6-hour xray flux data
     # The GOES data file is expected to be named "xrays-6-hour.json"
-    dfx = pd.read_json('xrays-6-hour.json')
+    goes_xray_url = "https://services.swpc.noaa.gov/json/goes/primary/xrays-6-hour.json"
+
+    if (xray_download):
+        print(f"\n--- Downloading GOES X-ray data from: {goes_xray_url} ---")
+        dfx = pd.read_json(goes_xray_url)
+        dfx.to_json("xrays-6-hour.json", orient='records', indent=2, date_format='iso')
+    else:
+        dfx = pd.read_json('xrays-6-hour.json')
     # Select every other row as per original script logic
     dfx = dfx.iloc[::2]
     dfx = dfx.rename(columns={'time_tag':'Timestamp'})
@@ -601,10 +610,27 @@ def calculate_reporter_snr_trends(df_with_map_and_km):
 
 
 def main():
+
+    parser = argparse.ArgumentParser(
+        description="Process WSPR data, optionally download live GOES X-ray data to file, and generate plots.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter 
+    )
+    parser.add_argument(
+        '-x', '--download-xray',
+        action='store_true', 
+        help="Download live GOES X-ray data. If not specified, the manually downloaded file is used. (default: False)"
+    )
+
+    # parser.add_argument('--output-dir', type=str, default='.', help='Directory to save output files.')
+
+    args = parser.parse_args()
+
     try:
+        xray_download = args.download_xray
+
         df = open_wspr_file()
         df = add_wspr_dimensions(df)
-        dfx = open_goes_xray_file() # Load dfx once here
+        dfx = open_goes_xray_file(xray_download) # Load dfx once here
 
         if df is not None:
             df_joined = join_wspr_with_goes(df, dfx) # Join with original dfx
